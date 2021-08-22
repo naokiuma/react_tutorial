@@ -3,27 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 
 
-//クラスではなく、関数コンポーネントに変える。
-//以下はクラス。
-// class Square extends React.Component {
-//     //Square はもはやゲームの状態を管理しなくなり、boardで管理するようになったので、Square の constructor を削除する
-//     // constructor(props){
-//     //     super(props);
-//     //     this.state = {
-//     //         value:null,
-//     //     }
-//     // }
-//     render() {
-//       return (
-//         <button 
-//             className="square"
-//             onClick={ () => { this.props.onClick() }}
-//         >
-//           {this.props.value}
-//         </button>
-//       );
-//     }
-// }
 //以下は関数コンポーネント
 function Square(props){
     return (
@@ -33,20 +12,59 @@ function Square(props){
         </button>
     )
 }
-
-
   
-  class Board extends React.Component {
+
+class Board extends React.Component {
+renderSquare(i) {
+    return <Square 
+            value={this.props.squares[i]}
+            //React では、イベントを表す props には on[Event] という名前、イベントを処理するメソッドには handle[Event] という名前を付けるのが慣習となっています。
+            onClick={() => this.props.onClick(i)}
+            />;
+}
+render() {
+    return (
+    <div>
+        <div className="board-row">
+        {this.renderSquare(0)}
+        {this.renderSquare(1)}
+        {this.renderSquare(2)}
+        </div>
+        <div className="board-row">
+        {this.renderSquare(3)}
+        {this.renderSquare(4)}
+        {this.renderSquare(5)}
+        </div>
+        <div className="board-row">
+        {this.renderSquare(6)}
+        {this.renderSquare(7)}
+        {this.renderSquare(8)}
+        </div>
+    </div>
+    );
+}
+}
+  
+
+
+
+  class Game extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            squares:Array(9).fill(null),
+            history:[{
+                squares:Array(9).fill(null),
+            }],
+            stepNumber:0,
             xIsNext:true
         }
     }
 
     handleClick(i){
-        const squaresCopy = this.state.squares.slice();//sliceは、引数を渡さない場合コピーする
+        console.log('stepnumber:' + this.state.stepNumber)
+        const history = this.state.history.slice(0,this.state.stepNumber + 1);
+        const current = history[history.length - 1];
+        const squaresCopy =　current.squares.slice();//sliceは、引数を渡さない場合コピーする
         if(calculateWinner(squaresCopy) || squaresCopy[i]){
             console.log('勝負はついている');
             return;
@@ -54,66 +72,67 @@ function Square(props){
         squaresCopy[i] = this.state.xIsNext? 'X' : 'O';
 
         this.setState({
-            squares:squaresCopy,
-            xIsNext:!this.state.xIsNext
+            history:history.concat(
+                [{ squares: squaresCopy}]
+            ),
+            stepNumber:history.length,
+            xIsNext:!this.state.xIsNext,
         })
-        console.log("今の盤面");
-        console.log(this.state.squares);
+        console.log("今の盤面のヒストリー");
+        console.log(this.state.history);
     }
 
-    renderSquare(i) {
-        return <Square 
-                value={this.state.squares[i]}
-                //React では、イベントを表す props には on[Event] という名前、イベントを処理するメソッドには handle[Event] という名前を付けるのが慣習となっています。
-                onClick={() => this.handleClick(i)}
-                />;
+
+    jumpTo(step){
+        this.setState({
+            stepNumber:step,
+            xIsNext: (step % 2) === 0,
+
+        });
     }
-  
+
+
     render() {
-        const winner = calculateWinner(this.state.squares);
+        const history = this.state.history;
+        const current = history[this.state.stepNumber];
+        const winner = calculateWinner(current.squares);
+
+        //履歴
+        const moves = history.map( (step,move) => {
+            console.log('move:' + move);
+            console.log("です")
+            const desc = move ?
+            'Fot to move #' + move :
+            'go to game start';
+            return (//手数のとこ。mapで繰り返し描写する
+                <li key={move}>
+                    <button onClick={ () => this.jumpTo(move)}>{ desc }</button>
+                </li>
+            );
+        })
+
         let status;
         if(winner){
             status = 'Winner: ' + winner;
         }else{
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
-  
+    
         return (
-        <div>
-            <div className="status">{status}</div>
-            <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
+        <div className="game">
+            <div className="game-board">
+            <Board
+                squares={current.squares}
+                onClick={(i) => this.handleClick(i)}
+
+            />
             </div>
-            <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-            </div>
-            <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
+            <div className="game-info">
+            <div>ステータスは{ status }です</div>
+            <ul>{ moves }</ul>
             </div>
         </div>
         );
-    }
-  }
-  
-  class Game extends React.Component {
-    render() {
-      return (
-        <div className="game">
-          <div className="game-board">
-            <Board />
-          </div>
-          <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
-          </div>
-        </div>
-      );
     }
   }
   
