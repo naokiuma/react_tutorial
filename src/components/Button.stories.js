@@ -28,4 +28,24 @@ Hoverd.args ={
     },
 };
 
+export const btn01 = Template.bind({});
+btn01.args ={
+    button:{
+        id:'3',
+        title:'btn01',
+        state:'btn01',
+        updatedAt:new Date(),
+    },
+};
+
+export const btn02 = Template.bind({});
+btn02.args ={
+    button:{
+        id:'4',
+        title:'btn02',
+        state:'btn02',
+        updatedAt:new Date(),
+    },
+};
+
 
