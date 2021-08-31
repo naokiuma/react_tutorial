@@ -45,6 +45,6 @@ export const Empty = Template.bind({});
 Empty.args = {
   // Shaping the stories through args composition.
   // Inherited data coming from the Loading story.
-  ...Loading.args,
+  ...Loading.args,//loadingの中身。
   loading: false,
 };

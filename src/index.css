@@ -1071,41 +1071,33 @@ a:focus {
   max-width: 100%;
 }
 
-/*以下、btn情報*/
-.hoverd{
-  background-color: yellow;
-}
 
-.btn01 {
+
+.tc{
   text-align: center;
+}
+.description{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+/*以下、btn情報*/
+
+.btn01{
+  width: 200px;
   margin: auto;
-  display: block;
-  width: 230px;
-  max-height: 60px;
-  z-index: 2;
-  position: relative;
+  transition: all .3s cubic-bezier(.23,1,.32,1);
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  text-align: center;
+}
+.btn01:hover{
+  color: #000;
+  background-color: #fff;
+  border: 1px solid #000;
 }
 
-.btn01 span {
-  background-color: #a68b62;
-  color: white;
-  width: 100%;
-  border-radius: 30px;
-  -webkit-box-shadow: 0px 3px #776447;
-          box-shadow: 0px 3px #776447;
-  font-size: 18px;
-  display: inline-block;
-  line-height: 60px;
-}
-
-.btn01 span:hover {
-  -webkit-transform: translateY(1px);
-          transform: translateY(1px);
-  -webkit-box-shadow: 0px 2px #776447;
-          box-shadow: 0px 2px #776447;
-}
-
-/*背景透明(もっと見るなど)*/
 .btn02 {
   text-align: center;
   margin: auto;
@@ -1114,49 +1106,43 @@ a:focus {
   max-height: 60px;
   z-index: 2;
   position: relative;
-  cursor: pointer;
 }
 
 .btn02 span {
-  color: black;
-  border: 2px solid #362515;
+  background-color: #a68b62;
+  color: white;
   width: 100%;
   border-radius: 30px;
+  box-shadow: 0px 3px #776447;
   font-size: 18px;
   display: inline-block;
   line-height: 60px;
 }
 
 .btn02 span:hover {
-  -webkit-transform: translateY(1px);
-          transform: translateY(1px);
-  -webkit-box-shadow: 0px 2px #776447;
-          box-shadow: 0px 2px #776447;
+  transform: translateY(1px);
+  box-shadow: 0px 2px #776447;
 }
+
 
 /*背景白色*/
 .btn03 {
   background-color: white;
   border-radius: 40px;
   height: 85px;
+  width: 230px;
+  margin: auto;
   text-align: center;
   padding: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 
 .btn03 span {
   width: 100%;
   border-radius: 30px;
-  padding: 15px 0px;
+  padding: 25px;
   border: 2px solid #f7f1e8;
 }
 
