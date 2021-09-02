@@ -1153,3 +1153,61 @@ a:focus {
   color: white;
   text-align: center;
 }
+
+
+.check-box {
+  cursor: pointer;
+}
+
+.check-box input {
+  display: none;
+}
+
+.check-box input + .text:before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: 0.25em;
+  margin: 0 5px 0 0;
+  background-image: none, url("https://s-cross.net/wp-content/uploads/2020/01/checkbox-box.png");
+  background-size: 68% auto, 100%;
+  background-position: top 55% left 50%, 0 0;
+  background-repeat: no-repeat, no-repeat;
+  width: 19px;
+  height: 18px;
+}
+
+.check-box input:checked + .text:before {
+  background-image: url("https://s-cross.net/wp-content/uploads/2020/01/checkbox-check.png"), url("https://s-cross.net/wp-content/uploads/2020/01/checkbox-box.png");
+}
+
+
+/*ボーダー付きボックス*/
+.border_box{
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  position: relative;
+  padding: 25px 30px;
+}
+
+.border_box:after{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(100% - 15px);
+  height: calc(100% - 15px);
+  display: block;
+  border: 1px solid #efe9db;
+}
+
+.required_label{
+  background-color: #ce132d;
+  color: white;
+  width: 45px;
+  height: 25px;
+  font-size: 14px;
+  padding: 15px 30px;
+}
