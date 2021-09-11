@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import "./compornents/"
 
 
 //以下は関数コンポーネント
