@@ -29,8 +29,5 @@ export default function Label({ label:{title,state,type } }){
             <a className={`${state}`}>{title}</a>
         </div>
 
-        
-
-
     );
 }
