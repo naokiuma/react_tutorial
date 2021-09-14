@@ -52,4 +52,16 @@ btn03.args ={
     },
 };
 
+export const btn04 = Template.bind({});
+btn04.args ={
+    button:{
+        id:'4',
+        type:'a',
+        title:'btn04',
+        state:'btn04',
+        text:'absolouteで調整',
+        updatedAt:new Date(),
+    },
+};
+
 
