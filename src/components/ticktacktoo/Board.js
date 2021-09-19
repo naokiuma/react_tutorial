@@ -1,8 +1,9 @@
 import React from 'react';
-import { Square } from './Square';
+import Square from './Square';
 
 
-export class Board extends React.Component {
+export default class Board extends React.Component {
+    
     renderSquare(i) {
         return <Square 
                 value={this.props.squares[i]}
@@ -10,7 +11,12 @@ export class Board extends React.Component {
                 onClick={() => this.props.onClick(i)}
                 />;
     }
+    
+    
     render() {
+        // if(this.title == "maru"){
+        // }
+
         return (
         <div>
             <div className="board-row">

@@ -18,13 +18,6 @@ Primary.args = {
   label: 'Button',
 };
 
-export const PrimaryBig = Template.bind({});
-PrimaryBig.args = {
-  primary: true,
-  label: 'Button',
-  size: 'large',
-};
-
 export const Secondary = Template.bind({});
 Secondary.args = {
   label: 'Button',

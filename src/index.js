@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import "./compornents/";
-// import { Square } from './components/ticktacktoo/Square.js';
-import { Game } from './components/ticktacktoo/Game.js';
+import { Square } from './components/ticktacktoo/Square.js';
+import { Board } from './components/ticktacktoo/Board.js';
+import Game from './components/ticktacktoo/Game.js';
 
 //以下は関数コンポーネント
 // function Square(props){
