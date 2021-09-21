@@ -31,8 +31,8 @@ export default function Square({ square:{id,title,state} },props){
 
     return (
         //両側の括弧を削除
-        <button className = "square" onClick = {this.props.onClick}>
-            {this.props.value}
+        <button className = "square" onClick = {props.onClick}>
+            {props.value}
         </button>
     )
 }
