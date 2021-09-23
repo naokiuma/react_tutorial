@@ -4,24 +4,28 @@ import PropTypes from 'prop-types';
 
 //defaultがないことでエラーになっていた！！！
 //export default function Square(props){
-export default function Square({ square:{id,title,state} },props){
-
+// export default function Square({ squares:{id,title,state},props }){
+export default function Square(props){
     console.log("squareです")
+    console.log(props);
+    console.log(props.square);
+
     
-    if(title == "maru"){
+    
+    if(props.square.title == "maru"){
         return(
             <button className = "square">
                 O
             </button>
         );
-    }else if(title == "batsu"){
+    }else if(props.square.title == "batsu"){
         return(
             <button className = "square">
                 X
             </button>
         );
     }
-    else if(title == "sankaku"){
+    else if(props.square.title == "sankaku"){
         return(
             <button className = "square">
                 △
@@ -33,6 +37,7 @@ export default function Square({ square:{id,title,state} },props){
         //両側の括弧を削除
         <button className = "square" onClick = {props.onClick}>
             {props.value}
+            
         </button>
     )
 }

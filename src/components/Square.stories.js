@@ -14,7 +14,7 @@ Default.args = {
     square:{
         id:'1',
         title:'maru',
-        state:'maru',
+        state:'maru_state',
     },
 };
 

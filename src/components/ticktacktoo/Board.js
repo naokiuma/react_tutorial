@@ -6,7 +6,8 @@ export default class Board extends React.Component {
     
     renderSquare(i) {
         return <Square 
-                value={this.props.squares[i]}
+                
+        value={this.props.squares[i]}
                 //React では、イベントを表す props には on[Event] という名前、イベントを処理するメソッドには handle[Event] という名前を付けるのが慣習となっています。
                 onClick={() => this.props.onClick(i)}
                 />;
