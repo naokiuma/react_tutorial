@@ -8,30 +8,33 @@ import PropTypes from 'prop-types';
 export default function Square(props){
     console.log("squareです")
     console.log(props);
-    console.log(props.square);
 
     
+    if(props.square){
+        console.log("storybookあり");
+        console.log(props.square)
+        if(props.square.title == "maru"){
+            return(
+                <button className = "square">
+                    O
+                </button>
+            );
+        }else if(props.square.title == "batsu"){
+            return(
+                <button className = "square">
+                    X
+                </button>
+            );
+        }
+        else if(props.square.title == "sankaku"){
+            return(
+                <button className = "square">
+                    △
+                </button>
+            );
+        }
+    }
     
-    if(props.square.title == "maru"){
-        return(
-            <button className = "square">
-                O
-            </button>
-        );
-    }else if(props.square.title == "batsu"){
-        return(
-            <button className = "square">
-                X
-            </button>
-        );
-    }
-    else if(props.square.title == "sankaku"){
-        return(
-            <button className = "square">
-                △
-            </button>
-        );
-    }
 
     return (
         //両側の括弧を削除

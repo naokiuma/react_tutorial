@@ -1,19 +1,21 @@
 import React from 'react';
 import Board from './ticktacktoo/Board';
+
 import * as SquareStories from './Square.stories';
-import { Default } from './Task.stories';
+
 
 
 export default {
     component:Board,
     title:'Board',
+    
     decorators:[story => <div style= {{ padding:'3rem'}}> {story()}</div>],
 }
 
 const Template = args => <Board {...args} />;
+export const Default = Template.bind({});
 
-export const maruGame = Template.bind({});
-maruGame.args = {
+Default.args = {
     title:'maru',
     marus:[
         { ...SquareStories.Maru.args.square, id: '1', title: 'maru 1' },
