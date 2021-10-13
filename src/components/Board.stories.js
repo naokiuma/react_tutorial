@@ -1,7 +1,7 @@
 import React from 'react';
 import Board from './ticktacktoo/Board';
 
-import * as SquareStories from './Square.stories';
+//import * as SquareStories from './Square.stories';
 
 
 
@@ -14,24 +14,27 @@ export default {
 
 const Template = args => <Board {...args} />;
 export const Default = Template.bind({});
+export const Maru = Template.bind({});
 
-// Default.args = {
-//     squares:{
-//         title:'maru',
-//         marus:[
-//             { ...SquareStories.Default.args.square, id: '1', title: 'maru 1' },
-//             { ...SquareStories.Default.args.square, id: '2', title: 'maru 2' },
-//             { ...SquareStories.Default.args.square, id: '3', title: 'maru 3' },
-//             { ...SquareStories.Default.args.square, id: '4', title: 'maru 4' },
-//             { ...SquareStories.Default.args.square, id: '5', title: 'maru 5' },
-//             { ...SquareStories.Default.args.square, id: '6', title: 'maru 6' },
-//         ],
-//     },
-//     onclick:() =>{}
-// };
+export const Batsus = Template.bind({});
+export const Sankaku = Template.bind({});
 
-//dekita
 Default.args = {
-    squares:['◯','◯','◯','◯','◯','◯','◯','◯','◯'],
+    squares: Array(9).fill(null),
+    onClick: () => {},
+};
+
+Maru.args = {
+    squares: Array(9).fill('◯'),
+    onClick: () => {},
+};
+
+Batsus.args = {
+    squares : Array(9).fill('×'),
+    onClick: () => {},
+};
+
+Sankaku.args = {
+    squares : Array(9).fill('△'),
     onClick: () => {},
 };

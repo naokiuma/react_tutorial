@@ -11,29 +11,32 @@ const Template = args => <Square {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-    square:{
+    
         id:'1',
         title:'maru',
         state:'maru_state',
-    },
+        value:'◯',
+    
 };
 
 export const Batsu = Template.bind({});
 Batsu.args ={
-    square:{
+    
         id:"2",
         title:'batsu',
         state:'batsu',
+        value:'×',
         updatedAt:new Date(),
-    },
+    
 };
 
 export const Sankaku = Template.bind({});
 Sankaku.args ={
-    square:{
-        id:"2",
+    
+        id:"3",
         title:'sankaku',
         state:'sankaku',
+        value:'△',
         updatedAt:new Date(),
-    },
+    
 };

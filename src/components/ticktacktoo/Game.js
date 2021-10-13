@@ -4,6 +4,7 @@ import Board from './Board';
 export default class Game extends React.Component {
     constructor(props){
         super(props);
+        this.props = props;
         this.state = {
             history:[{
                 squares:Array(9).fill(null),
@@ -11,6 +12,8 @@ export default class Game extends React.Component {
             stepNumber:0,
             xIsNext:true
         }
+        console.log('thisstateです');
+        console.log(this.state);
     }
 
     handleClick(i){
@@ -50,6 +53,12 @@ export default class Game extends React.Component {
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
 
+        console.log("proops")
+        console.log(this.props);
+        console.log("historyだよ")
+        console.log(history);
+        
+
         //履歴
         const moves = history.map( (step,move) => {
             console.log('move:' + move);
@@ -71,21 +80,26 @@ export default class Game extends React.Component {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
     
+        
         return (
-        <div className="game">
-            <div className="game-board">
-            <Board
-                squares={current.squares}
-                onClick={(i) => this.handleClick(i)}
-
-            />
+            <div className="game">
+                <div className="game-board">
+                <Board
+                
+                    squares={current.squares} //デフォルト
+                    //squares={this.props.squares}
+                    onClick={(i) => this.handleClick(i)}
+    
+                />
+                </div>
+                <div className="game-info">
+                <div>ステータスは{ status }です</div>
+                <ul>{ moves }</ul>
+                </div>
             </div>
-            <div className="game-info">
-            <div>ステータスは{ status }です</div>
-            <ul>{ moves }</ul>
-            </div>
-        </div>
-        );
+            );
+        
+        
     }
   }
 
