@@ -1,49 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from "styled-components";
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
 
 
-//defaultがないことでエラーになっていた！！！
-//export default function Square(props){
-// export default function Square({ squares:{id,title,state},props }){
+
+//2-3任意課題のためstyle-component試す----------------------------
+const Button = styled.button`
+color:blue;
+`
+
+//style_componentのjest-test。ボタンカラーをsnapshotでチェックする。
+//参考 https://zenn.dev/syu/articles/0f92abf7f0b5c5
+test("the color of the component is blue", () => {
+    const tree = renderer.create(<Button />).toJSON()
+    expect(tree).toHaveStyleRule('color', 'blue')
+
+});
+
+//style-component試しここまで----------------------------
+
+
 export default function Square(props){
     // console.log("squareです")
-    // console.log(props);
-
-    
-    // if(props.square){
-    //     console.log("storybookあり");
-    //     console.log(props.square)
-    //     if(props.square.title == "maru" || props.square.title == "batsu" || props.square.title == "sankaku"){
-    //         return(
-    //             <button className = "square">
-    //                 {props.square.value}
-    //             </button>
-    //         );
-    //     // }else if(props.square.title == "batsu"){
-    //     //     return(
-    //     //         <button className = "square">
-    //     //             X
-    //     //         </button>
-    //     //     );
-    //     // }
-    //     // else if(props.square.title == "sankaku"){
-    //     //     return(
-    //     //         <button className = "square">
-    //     //             △
-    //     //         </button>
-    //     //     );
-    //     }
-    // }
-    
-
     return (
         
-        <button className = "square" onClick = {props.onClick}>
-            {props.value}
-            
-        </button>
+        <Button className = "square" onClick = {props.onClick}>
+            {props.value}     
+        </Button>
     )
 }
+
+
 
 
 

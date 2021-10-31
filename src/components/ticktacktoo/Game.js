@@ -88,7 +88,7 @@ export default class Game extends React.Component {
     
         
         return (
-            <div className="game">
+            <div className="game game_wrap">
                 <div className="game-board">
                 <Board
                 

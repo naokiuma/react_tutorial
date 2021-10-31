@@ -25,7 +25,7 @@ Default.args = {
 };
 
 Maru.args = {
-    squares: Array(9).fill('◯ですがなよよ'),
+    squares: Array(9).fill('◯'),
     onClick: () => {},
 };
 
