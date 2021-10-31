@@ -1,6 +1,9 @@
 import React from 'react';
 import Board from './Board';
 
+
+
+
 export default class Game extends React.Component {
     constructor(props){
         super(props);
@@ -53,6 +56,9 @@ export default class Game extends React.Component {
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
 
+        //メモ2-3クイズ
+        console.log = jest.fn().mockImplementation(() => {})
+
         console.log("proops")
         console.log(this.props);
         console.log("historyだよ")
@@ -62,7 +68,7 @@ export default class Game extends React.Component {
         //履歴
         const moves = history.map( (step,move) => {
             console.log('move:' + move);
-            console.log("です")
+            console.log("ですがなお")
             const desc = move ?
             'Fot to move #' + move :
             'go to game start';
@@ -77,7 +83,7 @@ export default class Game extends React.Component {
         if(winner){
             status = 'Winner: ' + winner;
         }else{
-            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+            status = '次のplayer: ' + (this.state.xIsNext ? 'X' : 'O');
         }
     
         
