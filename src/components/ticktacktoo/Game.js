@@ -57,7 +57,7 @@ export default class Game extends React.Component {
         const winner = calculateWinner(current.squares);
 
         //メモ2-3クイズ
-        console.log = jest.fn().mockImplementation(() => {})
+        //console.log = jest.fn().mockImplementation(() => {})
 
         console.log("proops")
         console.log(this.props);

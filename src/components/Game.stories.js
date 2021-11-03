@@ -1,6 +1,6 @@
 import React from 'react';
 import Game from './ticktacktoo/Game';
-import * as Board from './Board.stories';
+// import * as Board from './Board.stories';
 export default {
     component:Game,
     title:'Game',
